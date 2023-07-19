@@ -1,0 +1,48 @@
+1. Several helper functions were designed to return values in two different ways (via an argument and/or by return).
+Explain at least one benefit of this “feature” and how it increases usability/flexibility and at least one negative
+reason why having functions designed to work in this way may not be desirable.
+
+	Benefit: A major benefit of having functions that can return values both via an argument and by return is 
+	flexibility. The function caller has the option of using either the returned value directly or the updated 
+	argument, depending on the specific requirement or preference. This can lead to more expressive code, where 
+	the programmer can choose the mechanism that fits best with their coding style or the particular situation.
+
+	Drawback: However, this flexibility may also lead to confusion and potential mistakes. If a function modifies
+	an argument and also returns a value, it may not be clear which result should be used or if they are supposed
+	to be used together in a specific way. This increases the cognitive load on the programmer and can lead to 
+	misunderstandings or bugs. Also, if the function is changing the state of the passed argument, it can lead 
+	to side effects, which can make debugging difficult.
+
+2. According to the design principles for structured design, functions should be highly cohesive and have low
+coupling. Identify one function in the workshop that demonstrates less than perfect cohesion, and one function
+that demonstrates coupling that could be improved. For each identified function, briefly explain what you would
+do to improve them.
+
+	In the absence of specific functions in your workshop, I will discuss general principles. A function with 
+	less than perfect cohesion might be one that performs multiple, loosely related tasks. To improve it, we 
+	could break it down into multiple smaller functions, each of which performs one specific task. As for a 
+	function that demonstrates coupling that could be improved, if a function is heavily dependent on the 
+	internal details of another function or a specific data structure, this is a form of coupling. This can be 
+	improved by making the function work with more general inputs or by using interfaces or abstract classes 
+	to decouple the function from specific implementations.
+
+3. What advantages are there in passing structures to functions? Based on your readings this week (for next week’s
+topics) what could be done in the passing of this data to functions to make it more efficient? Explain how the
+“displayCatfoodData” function could be improved.
+
+	Advantages of passing structures to functions: This approach allows you to bundle related data together 
+	in a coherent package, making the function's interface simpler and more intuitive. When the function 
+	operates on a structure, it's clear that those pieces of data belong together and are being manipulated 
+	as a unit.
+
+	Improvement for efficiency: To increase efficiency when passing structures to functions, you could consider 
+	passing them by reference or pointer, especially if the structures are large. This avoids the cost of 
+	copying the entire structure.
+
+	Improving the "displayCatfoodData" function: Without specific details, in general, we can ensure the 
+	function only does what its name suggests, i.e., display data. Any data processing should ideally be done 
+	before this function is called. If the structure is large, consider passing it by reference. If the function 
+	is just reading the data (which is typical for a display function), ensure you're passing it as a constant 
+	reference to avoid accidental modifications. Also, if the function could work with streams instead of 
+	specifically std::cout, it would be more versatile and could be used to output to different destinations 
+	(like files, networks, etc.).
