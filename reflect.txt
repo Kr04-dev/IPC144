@@ -1,0 +1,63 @@
+1. Were you successful in coding non-repetitive sections of logic in the game play portion of this workshop (drawing
+of the ruler, board, player position, etc.)? If so, how did you accomplish this (don’t provide your code in your
+answer)? If not, why? Explain precisely what you struggled with and refer to the logic of the workshop to justify
+your answer.
+
+	Yes, I was successful in coding non-repetitive sections of logic in the game play portion of this workshop. 
+	The sections, such as the drawing of the ruler, board, and player position, were made non-repetitive through 
+	the use of functions. For instance, the game's configuration (like setting up player and game data, 
+	bomb placements, and treasure placements) is done using two separate functions, configure_player() and 
+	configure_game(). The gameplay logic, such as user input for moves, checking for bombs or treasures, and 
+	updating game state, is all handled within the game_play() function. The benefit of this approach is that 
+	we encapsulate distinct sections of logic within their own functions, improving the readability, maintainability, 
+	and modularity of the code. For example, if we need to change the way the game board is drawn, we only need to 
+	modify the game_play() function without affecting other parts of the code.
+
+2. Explain how the use of structures simplified your program. Provide proof of your argument by contrasting the
+alternatives – do not include code in your answer – you must explain in simple terms the impact the concept of
+structures has in our programming strategies.
+	
+	The use of structures greatly simplified the program by allowing us to group related variables into 
+	single logical entities. In this program, we used two structures: PlayerInfo and GameInfo. PlayerInfo 
+	encapsulates player-related data such as lives, symbol, treasure count, and move. GameInfo encapsulates 
+	game-related data such as path length, bombs, treasures, history, and board. By using structures, we were 
+	able to group related data together, making the program easier to understand and manage. Without structures, 
+	we would have to declare, manipulate, and pass around individual variables for all the data associated with 
+	a player or the game, which can quickly become messy and hard to track. Structures, on the other hand, allow 
+	us to operate on an entire set of related data as a unit, which is more efficient and less error-prone. 
+	For example, instead of passing individual player data elements to the configure_player() function, we simply 
+	pass the PlayerInfo structure.
+
+3.  Examine your code and determine the maximum number of levels of nesting (deepest) you ended up using in your
+program logic. Provide a simple indented outline that illustrates your answer (copy only the construct line for each
+level and do not include all the code within unless there is another nested construct). For example, two levels of
+nesting as an outline:
+
+	if(horse != hen){
+		while(chickenPecks){
+			if(food == grain){
+			}
+		}
+	}
+
+	In this program, the maximum number of nesting levels is three, which can be found in the game_play() function.
+	The code outline that illustrates this is:
+	void game_play(GameInfo* game, PlayerInfo* player) {
+	    // Level 1
+	    do {
+	        // Level 2
+	        do {
+	            // Level 3
+	            if (!(player->move > 0 && player->move <= MAX_MOVE)) {
+	                // ...
+	            } else {
+	                // ...
+	            }
+	        } while (!(player->move = 0) || !(player->lives = 0));
+	    } while (player->lives > 0 && game->limit_move > 0);
+	}
+	Here, the outermost loop (Level 1) keeps the game running until the player loses all lives or no moves are left. 
+	The second level loop (Level 2) handles individual moves until the player enters a valid move or loses all lives. 
+	The innermost if-else construct (Level 3) checks whether the player's move is within range and updates the game 
+	state accordingly.
+
