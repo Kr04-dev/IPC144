@@ -1,0 +1,105 @@
+/*/////////////////////////////////////////////////////////////////////////
+                          Workshop - #2 (reflection)
+Full Name  :Timothy Lee
+Student ID#:177133212
+Email      :glee89@myseneca.ca
+Section    :NRA
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+/////////////////////////////////////////////////////////////////////////*/
+
+1. Given the following C statements:
+
+	float price1 = 17.96f, price3 = 17.98f;
+	double price2 = 17.96, price4 = 17.98;
+		printf("1. 17.96 = %f (as cents:%d)\n", price1, (int)(price1 * 100));
+		printf("2. 17.96 = %lf (as cents:%d)\n", price2, (int)(price2 * 100));
+		printf("3. 17.98 = %f (as cents:%d)\n", price3, (int)(price3 * 100));
+		printf("4. 17.98 = %lf (as cents:%d)\n", price4, (int)(price4 * 100));
+
+Execute the above sample code on your machine. Briefly explain why price1 and the corresponding converted
+cent value does not properly represent the intended value. Why do you think all the other samples work as
+expected?
+	
+	Computers sometimes struggle to store numbers like 17.96 exactly right. This is because of the way 
+	they save such numbers.When you use a 'float' type number (like price1) and do math with it, the 
+	result might be slightly off. So, if you take price1 (which is 17.96), multiply it by 100, and 
+	change it into a whole number, you might not get 1796 because of this slight error. A 'double' 
+	type number (like price2), though, is stored more accurately. This means if you do the same math
+	with price2, you'll get the right answer of 1796. The numbers 17.98 in both 'float' (price3) and 
+	'double' (price4) types work out fine due to their specifics. When you deal with money in 
+	programming, you should use whole numbers (like cents) or special kinds of numbers that can store 
+	decimals accurately, to avoid such errors.
+
+2. Execute the below code on your machine:
+
+	int money = 7245;
+		printf("1. $%.2lf\n", money / 100.0);
+		printf("2. $%.2lf\n", money / (double)100);
+		printf("3. $%.2lf\n", (double)money / 100);
+
+Explain why these three examples work as intended. Apply terms like cast, promotion, coercion, implicit, and
+explicit in your answer.
+
+	All three examples change cents to dollars and cents. This is done by dividing the amount in cents (7245)
+	by 100. But to get a correct answer with cents, we need to make sure we're not doing normal whole number 
+	(integer) division.
+	
+	printf("1. $%.2lf\n", money / 100.0); - In this example, 100.0 is a number with decimal points (a double).
+	When you divide the whole number money by this double 100.0, the computer automatically changes money into 
+	a double too. This is like the computer automatically correcting itself. As a result, you get the correct 
+	dollars and cents.
+
+	printf("2. $%.2lf\n", money / (double)100); - Here, (double)100 is you telling the computer to treat 100 
+	as a double before dividing. This is like you're manually correcting the computer before it does the math. 
+	This way, you also get the correct dollars and cents.
+
+	printf("3. $%.2lf\n", (double)money / 100); - This time, (double)money is you changing money to a double 
+	before the division. Again, you're manually correcting the computer before the math. The result is also 
+	the correct dollars and cents.
+
+3. Execute the following code on your machine:
+
+	int result, money = 7245;
+	result = money / 100;
+		printf("1. $%.2lf\n", money / 100);
+		printf("2. $%d\n", money / 100);
+		printf("3. $%.2lf\n", result);
+		printf("4. $%d\n", result);
+Apply terms like cast, promotion, truncation, coercion, implicit, and explicit in answering the following
+questions.
+
+a) What is the value of the variable result? Explain why.
+
+	The value of the variable result is 72. This is because the operation money / 100 is integer division, 
+	and integer division truncates any fractional part. It only keeps the integer part of the result. 
+	Since 7245 divided by 100 equals 72.45, the fraction .45 is dropped in integer division, and the result 
+	is 72.
+
+b) What values are displayed for samples 1, 2, 3, and 4?
+	
+	Sample 1 will print "1. $72.00". 
+		This happens because in the division money / 100, although it is aninteger division, the result 
+		is implicitly converted to a double due to the printf argument %.2lf, and then it is displayed 
+		as a floating-point number. However, the fraction part is lost in the original integer division, 
+		so it prints as 72.00.
+	Sample 2 will print "2. $72". 
+		It's displaying the integer division result of money / 100.
+	Sample 3 will print "3. $72.00". 
+		Here, even though we are using the printf argument %.2lf, which is for doubles, result is an 
+		integer. There's an implicit conversion from int to double but it does not recover the 
+		fractional part lost during the initial integer division.
+	Sample 4 will print "4. $72". 
+		It's just printing the integer result.
+
+c) What can you conclude about the printf function that causes samples 1 and 3 not to work as expected?
+
+	The printf function just shows the values it's given, it doesn't do math. When you divide money by 100, 
+	it only keeps the whole number part (like 72), not the part after the decimal point (like .45). printf 
+	can't bring back that lost part after the decimal point. So, in examples 1 and 3, even though you're 
+	telling printf to show the result like a decimal number (using %.2lf), the part after the decimal point 
+	is already gone. So, printf can only show the whole number part and .00 after it, because it doesn't have 
+	the original decimal part anymore.
