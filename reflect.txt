@@ -1,0 +1,107 @@
+1. Why are there three types of iteration constructs if we can make any one of them behave the same way? Refer
+to your code in this workshop to help backup your answer (do NOT include the code in your answer). Typically,
+when working with arrays, there is one iteration construct we favour – what is it and explain why it is more
+preferred over the other options.
+
+	The three types of iteration constructs commonly used in programming are for, while, and do-while loops. 
+	While it is true that any one of them can be used to achieve similar behaviour, they have distinct use 
+	cases and offer different levels of flexibility.
+
+		The for loop is typically used when the number of iterations is known in advance or when iterating over 
+		a range of values. It consists of an initialization, a condition, and an increment/decrement statement, 
+		all within a single line of code. This makes it concise and suitable for cases where you want to control 
+		the loop using a counter variable.
+
+		The while loop is used when the number of iterations is not known in advance and is determined by a 
+		condition. It is often used when looping over a collection of items or waiting for a specific condition 
+		to become true. The loop continues as long as the condition remains true, and you need to manually 
+		manage the loop variable and termination condition.
+
+		The do-while loop is similar to the while loop but with a crucial difference: it always executes at 
+		least once before checking the termination condition. This makes it useful when you want to ensure that 
+		a certain block of code executes at least once, regardless of the condition. It is commonly used when 
+		validating user input or implementing menu-based systems.
+
+	The for loop is used to iterate over the items in the wish list. It is preferred in this case because the number 
+	of items is fixed (defined by items) and known in advance. The loop variable i is used to access the corresponding 
+	arrays for item details. The for loop provides a convenient way to iterate over the items and perform the necessary 
+	input and calculations.
+
+2. Describe what you did to both test and debug your program. How did you go about finding where the
+problems were located (explain how you did this for both syntactic and semantic problems)?
+
+	To test and debug the program, you can follow these general steps:
+
+		Syntax problems: The compiler often identifies syntax errors during the compilation process. 
+		If there are syntax errors in the code, the compiler will display error messages indicating the 
+		location of the issue. You can carefully read the error messages and identify the specific line(s) 
+		where the errors occur. The use of the assignment operator (=) instead of the equality operator (==) 
+		in the conditional statements (if statements) is a syntax error that needs to be fixed.
+
+		Semantic problems: semantic errors are logical errors that do not cause the program to crash but 
+		result in incorrect behaviour or unexpected outputs. To identify semantic issues, you can use 
+		techniques such as code review, code inspection, and testing. In the provided code, there seem to be 
+		semantic issues related to the calculation and usage of variables priority_sum_1, priority_sum_2, 
+		and priority_sum_3. These variables are not initialized or updated correctly in the code, leading to 
+		incorrect calculations and potential issues in the forecast section.
+
+	To debug the code, we can try the following steps:
+	
+	1. Carefully review the code and compare it with the desired behaviour. Identify any discrepancies or potential 
+	issues in the logic.
+	2. Use print statements or debugging tools to display the values of variables at different points in the program. 
+	This can help you track the flow of execution and identify any unexpected values or incorrect calculations.
+	3. Test the program with different input values and scenarios to verify its behaviour. Pay attention to edge 
+	cases and boundary conditions.
+	4. Use a step-by-step debugger if one is available in your development environment. This allows you to execute the 
+	code line by line, inspecting the values of variables and identifying any issues as you go along.
+
+	By applying these testing and debugging techniques, you can locate and address both syntactic and semantic problems in the code.
+
+3. When attempting to submit your work, you receive the following error feedback from the submitter:
+
+	Checking output:
+	In line number 6 of your output:
+	The output should be:
+	Enter your monthly NET income: $0
+					^
+	But your output is:
+	Enter your monthly NET income: $567.89
+	 				^
+	Unmatched character details:
+	The character in column 33 is supposed to be:
+		 [0] ASCII code(48)
+	but you printed
+		 [5] ASCII code(53)
+	Outputs don't match. Submission aborted!
+	To see exactly what is wrong, open the following two files in this
+	directory and compare them:
+		Your output file: output.txt
+		Correct output file: w6p2_master_output.txt
+
+Using the above explicit information, explain each step you must take to successfully identify and fix your error.
+
+	1. Open the output file (output.txt) and the correct output file (w6p2_master_output.txt), as mentioned in the error message.
+	2. Locate line number 6 in both files to compare the expected output and the actual output.
+	3. Compare the character at column 33 in both files.
+		According to the error feedback, the expected character is the digit 0 (ASCII code 48).
+		The actual character in your output is the digit 5 (ASCII code 53).
+	4. Identify the discrepancy between the expected and actual characters.
+		The error message states that the character is unmatched, meaning it doesn't match the expected character.
+	5. Based on the error feedback, the issue lies in the line that prompts the user for their monthly NET income.
+		The expected output should be "Enter your monthly NET income: $0" with a 0 at the specified position.
+		However, your output displays "Enter your monthly NET income: $567.89" with a 5 at the specified position.
+	6. Review the corresponding code that generates the output and identify the source of the error.
+		In this case, you need to locate the line in your code responsible for printing the prompt for monthly NET income.
+	7. Check the code for any issues that may cause incorrect output.
+		Pay attention to any variables or calculations that could affect the value being printed.
+		Ensure that the variable used to store the monthly NET income is correctly initialized and assigned.
+	8. Correct the identified issue in the code to ensure the output matches the expected output.
+		In this case, you need to make sure that the variable storing the monthly NET income is correctly set to 0.
+	9. Save the changes in your code and recompile/run the program.
+	10. Generate a new output file and compare it with the correct output file to verify that the issue has been resolved.
+	11. If the output now matches the expected output, you can confidently submit your updated work. If not, repeat the steps 
+	    above to identify and fix any remaining errors.
+
+	By carefully comparing the expected and actual outputs, identifying the specific line and character causing the discrepancy, 
+	and reviewing the corresponding code, you can successfully identify and fix the error in your program.	
