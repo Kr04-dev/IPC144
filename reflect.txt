@@ -1,0 +1,116 @@
+1. Determining the customer preference based on the number of servings to the available coffee bag weights
+required a more complex logical expression. Copy your submitted code for only this part of the logic, and
+explain the following:
+
+A) How many relational expressions did you use and identify each of them.
+	
+	== is an equality operator, which checks whether the two operands are equal.
+	> is a greater than operator, which checks whether the left-hand operand is greater than the right-hand one.
+	<= is a less than or equal to operator, which checks whether the left-hand operand is less than or equal to 
+	the right-hand one.
+
+	There are total of 21 relational expressions and they are 
+
+1.	(coffee1 == 'L') or (coffee1 == 'l')
+2.	(coffee1 == 'M') or (coffee1 == 'm')
+3.	(coffee1 == 'R') or (coffee1 == 'r')
+4.	(coffee_with_cream1 == 'Y') or (coffee_with_cream1 == 'y')
+5.	(coffee_with_cream1 == 'N') or (coffee_with_cream1 == 'n')
+6.	(coffee2 == 'L') or (coffee2 == 'l')
+7.	(coffee2 == 'M') or (coffee2 == 'm')
+8.	(coffee2 == 'R') or (coffee2 == 'r')
+9.	(coffee_with_cream2 == 'Y') or (coffee_with_cream2 == 'y')
+10.	(coffee_with_cream2 == 'N') or (coffee_with_cream2 == 'n')
+11.	(coffee3 == 'L') or (coffee3 == 'l')
+12.	(coffee3 == 'M') or (coffee3 == 'm')
+13.	(coffee3 == 'R') or (coffee3 == 'r')
+14.	(coffee_with_cream3 == 'Y') or (coffee_with_cream3 == 'y')
+15.	(coffee_with_cream3 == 'N') or (coffee_with_cream3 == 'n')
+16.	(coffee_servings_input_1 > 0 and coffee_servings_input_1 <= 3)
+17.	(coffee_servings_input_1 > 4 and coffee_servings_input_1 <= 8)
+18.	(coffee_servings_input_1 > 9)
+19.	(coffee_servings_input_1 > 0 and coffee_servings_input_1 <= 3)
+20.	(coffee_servings_input_1 > 4 and coffee_servings_input_1 <= 8)
+21.	(coffee_servings_input_1 > 9)
+
+B) How many logical expressions did you use and identify each of them.
+
+	|| is a logical OR operator, which returns true if either or both of the operands are true.
+	&& is a logical AND operator, which returns true if both operands are true.
+
+	There are total of 18 relational expressions and they are 
+	
+1.	(coffee1 == 'L') || (coffee1 == 'l')
+2.	(coffee1 == 'M') || (coffee1 == 'm')
+3.	(coffee1 == 'R') || (coffee1 == 'r')
+4.	(coffee_with_cream1 == 'Y') || (coffee_with_cream1 == 'y')
+5.	(coffee_with_cream1 == 'N') || (coffee_with_cream1 == 'n')
+6.	(coffee2 == 'L') || (coffee2 == 'l')
+7.	(coffee2 == 'M') || (coffee2 == 'm')
+8.	(coffee2 == 'R') || (coffee2 == 'r')
+9.	(coffee_with_cream2 == 'Y') || (coffee_with_cream2 == 'y')
+10.	(coffee_with_cream2 == 'N') || (coffee_with_cream2 == 'n')
+11.	(coffee3 == 'L') || (coffee3 == 'l')
+12.	(coffee3 == 'M') || (coffee3 == 'm')
+13.	(coffee3 == 'R') || (coffee3 == 'r')
+14.	(coffee_with_cream3 == 'Y') || (coffee_with_cream3 == 'y')
+15.	(coffee_with_cream3 == 'N') || (coffee_with_cream3 == 'n')
+16.	(coffee_servings_input_1 > 0 && coffee_servings_input_1 <= 3)
+17.	(coffee_servings_input_1 > 4 && coffee_servings_input_1 <= 8 )
+18.	(coffee_servings_input_1 > 9)
+
+2. Referring to Part-1 output #9, show how that logic can be coded in TWO correct ways, one applying
+DeMorgan’s Law and the other way not using DeMorgan’s Law. Also, identify what method you used in your
+submitted answer for Part-1.
+
+	There are 2 ways besides what we are allowed to use to find out that the 9. is false. 
+		typedef struct {
+		    int id;
+		    char taxed;
+		    float price;
+		} Product;
+
+
+		'first one is not using DeMorgan’s Law'
+			bool isUnique(Product* products, int productsCount, Product product) {
+			    for(int i = 0; i < productsCount; i++) {
+			        if(products[i].id == product.id) {
+			            return false;
+			        }
+			    }
+			    return true;
+			}
+
+		'second one is accually using  DeMorgan’s Law'
+		to explain, !(A || B) is equivalent to !A && !B. Here, A is products[i].id == product.id and B 
+		is i < productsCount. So, applying DeMorgan's law, !(products[i].id == product.id || i < productsCount)
+		is equivalent to products[i].id != product.id && i >= productsCount.
+
+			bool isUniqueDeMorgan(Product* products, int productsCount, Product product) {
+			    int i = 0;
+			    while(i < productsCount && products[i].id != product.id) {
+			        i++;
+			    }
+			    return i == productsCount;
+			}
+
+3. Using the variables you used in Part-2, demonstrate two ways you can organize them, so it is optimized for easy
+to maintain code and contributes towards clarity in how data is stored in the program.
+
+	There are 2 ways to organize and they are 'arrays' and 'struct'. In this case, we can create a Coffee struct 
+	to store information about each type of coffee. Here's an example of what that might look like:	
+	
+	typedef struct {
+		char type;
+		double weight_g;
+		int with_cream;	
+		int light, medium, rich;
+	} Coffee;
+
+	Another method is to use arrays to store related variables, especially when they are numeric and follow a 
+	sequential pattern. For example, the coffee weights (coffee_g1, coffee_g2, coffee_g3) can be stored in an 
+	array like so:
+
+	double coffee_weights[3];
+	double type[3];
+	double with_cream[3];
