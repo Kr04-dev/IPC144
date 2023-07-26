@@ -2,6 +2,7 @@
 #define BUFFER_SIZE 1024
 
 #include <stdio.h>
+#include <string.h>
 #include "core.h"
 
 int inputInt(void) {
@@ -85,26 +86,33 @@ void inputCString(char* cStringValue, int minLength, int maxLength) {
     }
 }
 
+//Functions for Display Phone Number
 void displayFormattedPhone(const char* phoneNum) {
     int i, count = 0;
 
-    for (i = 0; (phoneNum != NULL) && (phoneNum != '\0') && ('0' <= phoneNum[i]) && (phoneNum[i] <= '9'); i++)
+    for (i = 0; (phoneNum != NULL) && (phoneNum != '\0') && ('0' <= phoneNum[i]) && (phoneNum[i] <= '9'); i++) {
         count++;
+    }
 
     if (count == 10) {
         printf("%c", '(');
-        for (i = 0; i < 3; i++)
+        for (i = 0; i < 3; i++) {
             printf("%c", phoneNum[i]);
+        }
         printf("%c", ')');
-        for (i = 3; i < 6; i++)
+
+        for (i = 3; i < 6; i++) {
             printf("%c", phoneNum[i]);
+        }
         printf("%c", '-');
-        for (i = 6; i < 10; i++)
+        for (i = 6; i < 10; i++) {
             printf("%c", phoneNum[i]);
+        }
     }
     else {
         printf("(___)___-____");
     }
+
 }
 
 void clearInputBuffer(void) {
