@@ -78,15 +78,5 @@ void clearInputBuffer(void);
 // Wait for user to input the "enter" key to continue
 void suspend(void);
 
-
-
-
-
-
-
-
-
-
-
 // !!! DO NOT DELETE THE BELOW LINE !!!
 #endif // !CORE_H
