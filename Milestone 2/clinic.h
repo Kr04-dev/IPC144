@@ -2,7 +2,7 @@
                         Assignment 1 - Milestone 2
 Full Name  : Timothy Lee
 Student ID#: 177133212
-Email      : GLEE89@myseneca.ca
+Email      : glee89@myseneca.ca
 Section    : IPC144NRA
 
 Authenticity Declaration:
