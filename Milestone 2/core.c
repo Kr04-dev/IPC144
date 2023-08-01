@@ -28,19 +28,16 @@ piece of work is entirely of my own creation.
 
 
 // Function for Input Integer
-int inputInt(void)
-{
+int inputInt(void){
 	int numberInput, validValue;
 	char newLine = 'X';
 
-	do
-	{
+	do{
 		validValue = 1;
 
 		scanf("%d%c", &numberInput, &newLine);
 
-		if (!(newLine == '\n'))
-		{
+		if (!(newLine == '\n')){
 			validValue = 0;
 
 			clearInputBuffer();
@@ -53,19 +50,16 @@ int inputInt(void)
 }
 
 // Function for Input Positive Integer
-int inputIntPositive(void)
-{
+int inputIntPositive(void){
 	int positiveNumber, validValue;
 
-	do
-	{
+	do{
 		positiveNumber = inputInt();
 		//scanf("%d", &positiveNumber);
 
 		validValue = 1;
 
-		if (positiveNumber < 1)
-		{
+		if (positiveNumber < 1){
 			validValue = 0;
 			printf("ERROR! Value must be > 0: ");
 		}
@@ -77,27 +71,21 @@ int inputIntPositive(void)
 }
 
 // Range of Integer
-int inputIntRange(int minNumber, int maxNumber)
-{
+int inputIntRange(int minNumber, int maxNumber){
 	int numberInput, validValue;
 	char newLine = 'X';
 
-	do
-	{
+	do{
 		validValue = 1;
 
 		scanf("%d%c", &numberInput, &newLine);
 
-		if (!(newLine == '\n'))
-		{
+		if (!(newLine == '\n')){
 			validValue = 0;
 
 			clearInputBuffer();
 			printf("Error! Input a whole number: ");
-		}
-
-		else if (numberInput < minNumber || numberInput > maxNumber)
-		{
+		}else if (numberInput < minNumber || numberInput > maxNumber){
 			validValue = 0;
 
 			printf("ERROR! Value must be between %d and %d inclusive: ", minNumber, maxNumber);
@@ -109,29 +97,24 @@ int inputIntRange(int minNumber, int maxNumber)
 }
 
 // Function for Input Character
-char inputCharOption(char str[])
-{
+char inputCharOption(char str[]){
 	int i, count, validValue;
 	char letter;
 
-	do
-	{
+	do{
 		validValue = 1;
 		count = 0;
 
 		scanf(" %c", &letter);
 		clearInputBuffer();
 
-		for (i = 0; str[i] != '\0'; i++)
-		{
-			if (letter == str[i])
-			{
+		for (i = 0; str[i] != '\0'; i++){
+			if (letter == str[i]){
 				count++;
 			}
 
 		}
-		if (count == 0)
-		{
+		if (count == 0){
 			validValue = 0;
 
 			printf("ERROR: Character must be one of [%s]: ", str);
@@ -143,86 +126,67 @@ char inputCharOption(char str[])
 }
 
 // Function for Input Character String
-void inputCString(char* cStringValue, int minLength, int maxLength)
-{
+void inputCString(char* cStringValue, int minLength, int maxLength){
 	int i, validValue, count = 0;
 	char sixCString[1000 + 1] = { 0 };
 
-	do
-	{
+	do{
 		validValue = 1;
 
 		scanf("%[^\n]", sixCString);
 		clearInputBuffer();
 
-		for (i = 0; sixCString[i] != '\0'; i++)
-		{
+		for (i = 0; sixCString[i] != '\0'; i++){
 			count++;
 		}
 
-		if (count < minLength || count > maxLength)
-		{
+		if (count < minLength || count > maxLength){
 			validValue = 0;
-			if (maxLength == minLength)
-			{
+			if (maxLength == minLength){
 				printf("ERROR: String length must be exactly %d chars: ", minLength);
-			}
-			else if (count > maxLength)
-			{
+			}else if (count > maxLength){
 
 				printf("ERROR: String length must be no more than %d chars: ", maxLength);
-			}
-			else if (count < minLength)
-			{
+			}else if (count < minLength){
 				printf("ERROR: String length must be between %d and %d chars: ", minLength, maxLength);
 			}
 			count = 0;
-		}
-		else
-		{
+		}else {
 			validValue = 1;
 		}
 
 	} while (!validValue);
 
-	for (i = 0; i <= count; i++)
-	{
+	for (i = 0; i <= count; i++){
 		cStringValue[i] = sixCString[i];
 	}
 
 }
 
 //Functions for Display Phone Number
-void displayFormattedPhone(const char* phoneNum)
-{
+void displayFormattedPhone(const char* phoneNum){
 	int i, count = 0;
 
-	for (i = 0; (phoneNum != NULL) && (phoneNum != '\0') && ('0' <= phoneNum[i]) && (phoneNum[i] <= '9'); i++)
-	{
+	for (i = 0; (phoneNum != NULL) && (phoneNum != '\0') && ('0' <= phoneNum[i]) && (phoneNum[i] <= '9'); i++){
 		count++;
 	}
 
-	if (count == 10)
-	{
+	if (count == 10){
 		printf("%c", '(');
-		for (i = 0; i < 3; i++)
-		{
+		for (i = 0; i < 3; i++){
 			printf("%c", phoneNum[i]);
 		}
 		printf("%c", ')');
 
-		for (i = 3; i < 6; i++)
-		{
+		for (i = 3; i < 6; i++){
 			printf("%c", phoneNum[i]);
 		}
 		printf("%c", '-');
-		for (i = 6; i < 10; i++)
-		{
+		for (i = 6; i < 10; i++){
 			printf("%c", phoneNum[i]);
 		}
 	}
-	else
-	{
+	else{
 		printf("(___)___-____");
 	}
 
@@ -230,16 +194,13 @@ void displayFormattedPhone(const char* phoneNum)
 
 
 // Clear the standard input buffer
-void clearInputBuffer(void)
-{
+void clearInputBuffer(void){
 	// Discard all remaining char's from the standard input buffer:
-	while (getchar() != '\n')
-	{
+	while (getchar() != '\n'){
 		; // do nothing! 
 	}
 }
 // Wait for user to input the "enter" key to continue 
-void suspend(void)
-{
+void suspend(void){
 	printf("<ENTER> to continue..."); clearInputBuffer(); putchar('\n');
 }
