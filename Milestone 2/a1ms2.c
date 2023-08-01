@@ -20,14 +20,14 @@
 
 int main(void)
 {
-    struct Patient pets[MAX_PETS] = { 
+    struct Patient pets[MAX_PETS] = {
         {1024, "Shaggy Yanson", {"CELL","3048005191"} },
         {1032, "Puglsey Yanson", {"CELL","3048005191"} },
         {1040, "Beans Maulin", {"HOME","3649155831"} },
         {1048, "Banjo Codi", {"TBA",{'\0'}} },
         {1056, "Rover Davidov", {"WORK","7934346809"} }
     };
-    struct ClinicData data = { pets, MAX_PETS};
+    struct ClinicData data = { pets, MAX_PETS };
 
     // Entry point to the application logic:
     menuMain(&data);
@@ -522,4 +522,4 @@ Are you sure you want to exit? (y|n): y
 
 Exiting system... Goodbye.
 
-*/ 
+*/

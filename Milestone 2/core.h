@@ -1,9 +1,9 @@
 /*/////////////////////////////////////////////////////////////////////////
                         Assignment 1 - Milestone 2
-Full Name  :
-Student ID#:
-Email      :
-Section    :
+Full Name  : Timothy Lee
+Student ID#: 177133212
+Email      : glee89@myseneca.ca
+Section    : IPC144NRA
 
 Authenticity Declaration:
 I declare this submission is the result of my own work and has not been
@@ -53,7 +53,30 @@ void suspend(void);
 //////////////////////////////////////
 
 
+// Tester Function Definitions
 
+// Function for Input Integer
+int inputInt(void);
+
+// Function for Input Positive Integer
+int inputIntPositive(void);
+
+// Range of Integer
+int inputIntRange(int min, int max);
+
+// Function for Input Character
+char inputCharOption(char str[]);
+
+// Function for Input Character String
+void inputCString(char* cStringValue, int min, int max);
+
+void displayFormattedPhone(const char* phoneNum);
+
+// Clear the standard input buffer
+void clearInputBuffer(void);
+
+// Wait for user to input the "enter" key to continue
+void suspend(void);
 
 
 
