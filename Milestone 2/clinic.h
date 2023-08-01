@@ -40,8 +40,7 @@ piece of work is entirely of my own creation.
 
 // Data type: Phone
 // ToDo:
-struct Phone
-{
+struct Phone{
     char description[PHONE_DESC_LEN + 1];
     char number[PHONE_LEN + 1];
 
@@ -49,8 +48,7 @@ struct Phone
 
 // Data type: Patient 
 // ToDo:
-struct Patient
-{
+struct Patient{
     int patientNumber;
     char name[NAME_LEN + 1];
     struct Phone phone;
@@ -59,8 +57,7 @@ struct Patient
 
 // ClinicData type: Provided to student
 // !!! DO NOT MODIFY THIS DATA TYPE !!!
-struct ClinicData
-{
+struct ClinicData{
     struct Patient* patients;
     int maxPatient;
 };
