@@ -426,7 +426,7 @@ void inputPatient(struct Patient* patient){
 // Get user input for phone contact information
 // (ToDo: PUT THE FUNCTION DEFINITION BELOW)
 void inputPhoneData(struct Phone* phone){
-	int i, selection;
+	int selection;
 	char phoneNumber[PHONE_LEN + 1];
 
 	printf("Phone Information\n"
