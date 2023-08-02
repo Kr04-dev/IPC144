@@ -1,8 +1,6 @@
-VIEW THIS .md IN 'CODE MODE' 
-
 Everything is all in steps, you don't need to go to that youtube video for +20 min
 
-1.  Install python from https://www.python.org/ (version of python don't really matter)
+1.  Install python from (version of python don't really matter) https://www.python.org/
 
 2.  Open VS CODE and test with print("Hello world") 
 
