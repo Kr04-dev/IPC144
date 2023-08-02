@@ -305,7 +305,7 @@ void removePatient(struct Patient patient[], int max){
 			printf("Patient record has been removed!\n");
 
 		}else{
-			printf("Operation aborted\n");
+			printf("Operation aborted.\n");
 		}
 	}else{
 		printf("ERROR: Patient record not found!\n");
