@@ -1,9 +1,9 @@
 /*/////////////////////////////////////////////////////////////////////////
                         Assignment 1 - Milestone 3
-Full Name  :
-Student ID#:
-Email      :
-Section    :
+Full Name  : Timothy Lee
+Student ID#: 177133212
+Email      : glee89@myseneca.ca
+Section    : IPC144NRA
 
 Authenticity Declaration:
 I declare this submission is the result of my own work and has not been
@@ -36,6 +36,9 @@ piece of work is entirely of my own creation.
 
 // MS#3 Additional macro's:
 // ToDo:
+#define START_TIME 10
+#define END_TIME 14
+#define TIME_INTERVAL 30
 
 
 //////////////////////////////////////
@@ -44,24 +47,48 @@ piece of work is entirely of my own creation.
 
 // Data type: Phone
 // (Copy your code from MS#2)
-
+struct Phone
+{
+    char description[PHONE_DESC_LEN + 1];
+    char number[PHONE_LEN + 1];
+};
 
 // Data type: Patient 
 // (Copy your code from MS#2)
+struct Patient
+{
+    int patientNumber;
+    char name[NAME_LEN + 1];
+    struct Phone phone;
+};
 
 // ------------------- MS#3 -------------------
 
 // Data type: Time
 // ToDo:
-
+struct Time
+{
+    int hour;
+    int min;
+};
 
 // Data type: Date
 // ToDo:
-
+struct Date
+{
+    int year;
+    int month;
+    int day;
+};
 
 // Data type: Appointment
 // ToDo:
-
+struct Appointment
+{
+    int patientNumber;
+    struct Date date;
+    struct Time time;
+};
 
 
 // ClinicData type: Provided to student
@@ -91,8 +118,8 @@ void displayScheduleTableHeader(const struct Date* date, int isAllRecords);
 
 // Display a single appointment record with patient info. in tabular format
 void displayScheduleData(const struct Patient* patient,
-                         const struct Appointment* appoint,
-                         int includeDateField);
+    const struct Appointment* appoint,
+    int includeDateField);
 
 
 //////////////////////////////////////
@@ -133,19 +160,19 @@ void removePatient(struct Patient patient[], int max);
 
 // View ALL scheduled appointments
 // Todo:
-
+void viewAllAppointments(struct ClinicData* data);
 
 // View appointment schedule for the user input date
 // Todo:
-
+void viewAppointmentSchedule(struct ClinicData* data);
 
 // Add an appointment record to the appointment array
 // Todo:
-
+void addAppointment(struct Appointment* appoints, int, struct Patient* patients, int);
 
 // Remove an appointment record from the appointment array
 // Todo:
-
+void removeAppointment(struct Appointment* appoints, int, struct Patient* patients, int);
 
 
 //////////////////////////////////////
@@ -163,8 +190,24 @@ int nextPatientNumber(const struct Patient patient[], int max);
 
 // Find the patient array index by patient number (returns -1 if not found)
 int findPatientIndexByPatientNum(int patientNumber,
-                                 const struct Patient patient[], int max);
+    const struct Patient patient[], int max);
 
+
+///////Add Customized Function
+// Find the appointment array index by patient number and the date
+int findIndexByDate(int, struct Date inputDate, const struct Appointment appoints[], int);
+
+// Check if there still has data to read; if data is not empty return 1, otherwise return 0
+int isNotEmpty(const struct Appointment* appoints);
+
+// Check the opening and closing hour and time interval
+struct Time isTimeValid(void);
+
+// Check the range of year, month, day is correct
+struct Date isDateValid(void);
+
+// Sort appointments data based on the date
+void sortAppointmentsByDate(struct ClinicData* data);
 
 //////////////////////////////////////
 // USER INPUT FUNCTIONS

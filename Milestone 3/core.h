@@ -1,9 +1,9 @@
 /*/////////////////////////////////////////////////////////////////////////
                         Assignment 1 - Milestone 3
-Full Name  :
-Student ID#:
-Email      :
-Section    :
+Full Name  : Timothy Lee
+Student ID#: 177133212
+Email      : glee89@myseneca.ca
+Section    : IPC144NRA
 
 Authenticity Declaration:
 I declare this submission is the result of my own work and has not been
@@ -48,7 +48,13 @@ void suspend(void);
 // USER INPUT FUNCTIONS
 //////////////////////////////////////
 
-
+int inputInt(void);
+int inputIntPositive(void);
+int inputIntRange(int, int);
+char inputCharOption(const char[]);
+void inputCString(char*, int, int);
+void inputCStringNum(char*, int, int);
+void displayFormattedPhone(const char*);
 
 
 // !!! DO NOT DELETE THE BELOW LINE !!!
