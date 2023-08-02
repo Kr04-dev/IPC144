@@ -8,6 +8,7 @@ with open('input.txt', 'r') as tst:
     time.sleep(1)
     tst = tst.readlines()
     for i in range(0, len(tst), 1):
+        time.sleep(1/2)
         print(tst[i])
         gui.typewrite(tst[i])
 
