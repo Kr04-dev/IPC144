@@ -1,1 +1,43 @@
+1. Three functions created:
+	a) `viewAllAppointments(struct ClinicData* data)`: This function is responsible for displaying all scheduled appointments. 
+	It first prints the schedule header using the `displayScheduleTableHeader()` function. The appointments are then sorted 
+	based on the date. The function traverses through each appointment and checks if there is any data to read using the 
+	`isNotEmpty()` function. If there is data, it then finds the corresponding patient's information and displays it using 
+	the `displayScheduleData()` function.
 
+	b) `addAppointment(struct Appointment* appoints, int maxAppointments, struct Patient* patients, int maxPatients)`: This 
+	function adds a new appointment to the appointment array. It first asks the user to input a patient number. It then 
+	validates the date and time of the appointment using the `isDateValid()` and `isTimeValid()` functions respectively. 
+	Once the date and time are validated, the function checks if the time slot is already booked. If it's not booked, the 
+	new appointment is added to the appointment array.
+
+	c) `removeAppointment(struct Appointment* appoints, int maxAppointments, struct Patient* patients, int maxPatients)`: This 
+	function removes an existing appointment from the appointment array. It prompts the user to enter a patient number and 
+	a date. The function then finds the index of the appointment using the `findIndexByDate()` function. If the appointment is 
+	found, the user is asked to confirm the removal of the appointment. If the user confirms, the patient number for the 
+	appointment is set to 0, effectively removing the appointment.
+
+2. Minimizing the number of `scanf` function calls:
+
+	The `scanf` function is often used to read user input in C programming. However, `scanf` can lead to issues such as buffer 
+	overflow and it doesn't handle user input errors very well. Thus, it's advantageous to limit the use of `scanf` in your 
+	code. Instead, you can use safer alternatives like `fgets` for reading strings and `sscanf` for parsing them. In this code, 
+	functions like `inputIntRange()`, `inputCharOption()`, `inputCString()`, and `inputCStringNum()` are used to take user 
+	input, which are safer and provide better error handling than `scanf`.
+
+3. Placement of functions in modules:
+
+	a) `viewAllAppointments(struct ClinicData* data)`: This function is placed in the "clinic.c" module as it's directly related 
+	to the clinic's functionalities, specifically to viewing all appointments.
+
+	b) `addAppointment(struct Appointment* appoints, int maxAppointments, struct Patient* patients, int maxPatients)`: This 
+	function is also placed in the "clinic.c" module. It is responsible for adding new appointments, which is a critical 
+	function for a clinic system.
+
+	c) `removeAppointment(struct Appointment* appoints, int maxAppointments, struct Patient* patients, int maxPatients)`: 
+	This function is included in the "clinic.c" module as well because it deals with removing appointments from the clinic system.
+
+	The factors considered when deciding where to place these functions include the functionality of the function, the data 
+	it operates on, and the cohesion of the module. Placing related functions in the same module increases the cohesion of 
+	the module, makes the code easier to understand and maintain, and can also improve efficiency by reducing the need for data 
+	to be passed between modules.
